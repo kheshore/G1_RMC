@@ -5,7 +5,7 @@ import time
 # Recipient's WhatsApp number (including country code)
 phone_numbers = ["",""]  #"+9194*****3"
 
-# Message to be sent
+# Message to be sent to the phone_numbers through whatsapp
 message = "!...."
 
 # Ensure WhatsApp Web is logged in and focused
