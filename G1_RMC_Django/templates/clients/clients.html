@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Clients List</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Client</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Pending</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for invoice in invoices %}  <tr>
+        <td>{{ invoice.client }}</td>
+        <td>{{ invoice.quantity }}</td>
+        <td>{{ invoice.value }}</td>
+        <td>{{ invoice.pending }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
