@@ -12,11 +12,12 @@
     </tr>
   </thead>
   <tbody>
-    {% for invoice in invoices %}  <tr>
-        <td>{{ invoice.client }}</td>
-        <td>{{ invoice.quantity }}</td>
-        <td>{{ invoice.value }}</td>
-        <td>{{ invoice.pending }}</td>
+    {% for client in clients %}  
+      <tr>
+        <td>{{ client.clientname }}</td>  
+        <td>{{ client.quantity }}</td>
+        <td>{{ client.value }}</td>
+        <td>{{ client.pending }}</td>
       </tr>
     {% endfor %}
   </tbody>

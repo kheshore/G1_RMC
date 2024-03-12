@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
+
 {% block content %}
   <div class="row">
     <div class="col-md-12">
-      <h2>Invoice List</h2>  <div class="d-flex justify-content-between align-items-center mb-3">
-        <div class="search-box w-75"> <input class="form-control" type="text" placeholder="Search..." aria-label="Search">
+      <h2>Invoice List</h2>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="search-box w-75">
+          <input class="form-control" type="text" placeholder="Search..." aria-label="Search">
         </div>
         <a href="{% url 'add_Invoice' %}" class="btn btn-primary">Create +</a>
       </div>
     </div>
   </div>
 
-  <table class="table table-bordered table-hover align-self-start"> <thead>
+  <table class="table table-bordered table-hover align-self-start">
+    <thead>
       <tr>
         <th scope="col">Client</th>
         <th scope="col">Quantity</th>
         <th scope="col">Value</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +29,12 @@
         <td>{{ invoice.client }}</td>
         <td>{{ invoice.quantity }}</td>
         <td>{{ invoice.value }}</td>
+        <td>
+          <a href="{% url 'update_invoice' invoice.id %}" class="btn btn-primary">Update</a>
+        </td>
+        <td>
+          <a href="{% url 'delete_invoice' invoice.id %}" class="btn btn-danger">Delete</a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
