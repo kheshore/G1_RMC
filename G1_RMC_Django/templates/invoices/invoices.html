@@ -30,10 +30,10 @@
         <td>{{ invoice.quantity }}</td>
         <td>{{ invoice.value }}</td>
         <td>
-          <a href="{% url 'update_invoice' invoice.id %}" class="btn btn-primary">Update</a>
+          <a href="{% url 'update_invoice' %}" class="btn btn-primary">Update</a>
         </td>
         <td>
-          <a href="{% url 'delete_invoice' invoice.id %}" class="btn btn-danger">Delete</a>
+          <a href="{% url 'delete_invoice' %}" class="btn btn-danger">Delete</a>
         </td>
       </tr>
       {% endfor %}

@@ -11,6 +11,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>Date</th>
                 <th>Name</th>
                 <th>Grade</th>
                 <th>Quantity</th>
@@ -21,13 +22,18 @@
         <tbody>
             {% for order in orders %}
             <tr>
+                <td>{{ order.date|date:"j/F/y" }}</td>
                 <td>{{ order.clientname }}</td>
                 <td>{{ order.grade }}</td>
                 <td>{{ order.quantity }}</td>
                 <td>{{ order.totalbatch }}</td>
                 <td>
-                    <a href="{% url 'update_order' order.oid %}" class="btn btn-primary">Update</a>
-                    <a href="{% url 'delete_order' order.oid %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'update_order' order.oid %}" class="btn btn-primary btn-rounded">Edit</a>
+         
+                    <form action="{% url 'delete_order' order.oid %}" method="POST" class="d-inline">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete" class="btn btn-danger delete-btn btn-rounded" >
+                    </form>
                 </td>
             </tr>
             {% endfor %}
@@ -35,3 +41,4 @@
     </table>
 </div>
 {% endblock %}
+
