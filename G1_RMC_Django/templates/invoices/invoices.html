@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load mathfilters %} <!-- to perform subtraction within the table elements -->
 
 {% block content %}
   <div class="row">
@@ -32,7 +33,7 @@
         <td>{{ invoice.client }}</td>
         <td style="text-align: center;">{{ invoice.total_quantity }}</td>
         <td >{{ invoice.gross_value }}</td>
-        <td >{{ invoice.total_payment }}</td> <!-- here it should be grossval-payment but giving error -->
+        <td>{{ invoice.gross_value|sub:invoice.total_payment }}</td>
         <td >
           {% if invoice.total_payment >= invoice.gross_value %}
             <div class="text-success fw-bold">Completed</div>
