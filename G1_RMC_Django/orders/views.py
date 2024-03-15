@@ -16,6 +16,9 @@ def updateOrder(request, oid):
         form = OrderForm(request.POST, instance=order_instance)  # Use order_instance here
         if form.is_valid():
             form.save()
+            #  # Update the corresponding Invoice object
+            # invoice_instance = order_instance.invoiceid
+            # invoice_instance.update_invoicefororder()
             return redirect('orders')  # replace with the name of your orders page
     else:
         form = OrderForm(instance=order_instance)  # And also here
@@ -23,8 +26,10 @@ def updateOrder(request, oid):
 
 def deleteOrder(request, oid):
     order_instance = get_object_or_404(order, oid=oid)
+    invoice_instance = order_instance.invoiceid
     if request.method == 'POST':
         order_instance.delete()
+        invoice_instance.delete()
         return redirect('orders')  # replace with the name of your orders page view function
     return redirect('orders')  
 

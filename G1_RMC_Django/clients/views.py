@@ -1,7 +1,9 @@
+from django.db.models import Sum
 from django.shortcuts import render
-from .models import client
+from invoices.models import Invoice
 
 # Create your views here.
 def clientsView(request):
-    clients = client.objects.all()  # Query all clients
-    return render(request, 'clients/clients.html', {'clients': clients})
+    # Query all invoices, group them by client, and sum up the total_value
+    allInvoice = Invoice.objects.values('client').annotate(gross_value_sum=Sum('gross_value'))
+    return render(request, 'clients/clients.html', {'clients': allInvoice})

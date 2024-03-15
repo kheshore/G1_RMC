@@ -16,24 +16,34 @@
   <table class="table table-bordered table-hover align-self-start">
     <thead>
       <tr>
+        <th scope="col" class="col-md-2">Date</th>
         <th scope="col">Client</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Value</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
+        <th scope="col" class="col-md-1 " >Quantity</th>
+        <th scope="col">Gross Value</th>
+        <th scope="col">Pending</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
       {% for invoice in invoices %}
       <tr>
+        <td>{{ invoice.date }}</td>
         <td>{{ invoice.client }}</td>
-        <td>{{ invoice.quantity }}</td>
-        <td>{{ invoice.value }}</td>
-        <td>
-          <a href="{% url 'update_invoice' %}" class="btn btn-primary">Update</a>
+        <td style="text-align: center;">{{ invoice.total_quantity }}</td>
+        <td >{{ invoice.gross_value }}</td>
+        <td >{{ invoice.total_payment }}</td> <!-- here it should be grossval-payment but giving error -->
+        <td >
+          {% if invoice.total_payment >= invoice.gross_value %}
+            <div class="text-success fw-bold">Completed</div>
+          {% elif invoice.total_payment > 0 %}
+            <div class="text-warning fw-bold">Partially</div>
+          {% else %}
+            <div class="text-danger fw-bold">Pending</div>
+          {% endif %}
         </td>
-        <td>
-          <a href="{% url 'delete_invoice' %}" class="btn btn-danger">Delete</a>
+        <td class="col-md-2">
+          <a href="{% url 'add_Payment' invoice.id %}" class="btn btn-primary btn-rounded">Add Payment</a>
         </td>
       </tr>
       {% endfor %}

@@ -6,18 +6,15 @@
   <thead>
     <tr>
       <th scope="col">Client</th>
-      <th scope="col">Quantity</th>
       <th scope="col">Value</th>
-      <th scope="col">Pending</th>
+      <!-- <th scope="col">Pending</th> -->
     </tr>
   </thead>
   <tbody>
-    {% for client in clients %}  
+    {% for invoice in allInvoice %}  
       <tr>
-        <td>{{ client.clientname }}</td>  
-        <td>{{ client.quantity }}</td>
-        <td>{{ client.value }}</td>
-        <td>{{ client.pending }}</td>
+        <td>{{ invoice.client }}</td>  
+        <td>{{ invoice.gross_value }}</td>
       </tr>
     {% endfor %}
   </tbody>
