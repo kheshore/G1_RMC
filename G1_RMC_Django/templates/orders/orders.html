@@ -28,6 +28,8 @@
                 <td>{{ order.quantity }}</td>
                 <td>{{ order.totalbatch }}</td>
                 <td>
+                    <a href="" class="btn btn-secondary btn-rounded">Add Batch</a>
+         
                     <a href="{% url 'update_order' order.oid %}" class="btn btn-primary btn-rounded">Edit</a>
          
                     <form action="{% url 'delete_order' order.oid %}" method="POST" class="d-inline">

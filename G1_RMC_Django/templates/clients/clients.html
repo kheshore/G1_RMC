@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+
+
 {% block content %}
 <h1>Clients List</h1>
 
@@ -7,14 +9,15 @@
     <tr>
       <th scope="col">Client</th>
       <th scope="col">Value</th>
-      <!-- <th scope="col">Pending</th> -->
+      <th scope="col">Pending</th>
     </tr>
   </thead>
   <tbody>
-    {% for invoice in allInvoice %}  
+    {% for invoice in clients %}  
       <tr>
         <td>{{ invoice.client }}</td>  
-        <td>{{ invoice.gross_value }}</td>
+        <td>{{ invoice.gross_value_sum }}</td>
+        
       </tr>
     {% endfor %}
   </tbody>

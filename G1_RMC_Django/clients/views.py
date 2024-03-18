@@ -7,3 +7,4 @@ def clientsView(request):
     # Query all invoices, group them by client, and sum up the total_value
     allInvoice = Invoice.objects.values('client').annotate(gross_value_sum=Sum('gross_value'))
     return render(request, 'clients/clients.html', {'clients': allInvoice})
+
