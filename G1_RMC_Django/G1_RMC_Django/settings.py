@@ -16,7 +16,6 @@ from django.contrib import messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
     'clients',
     'dashboard',
     'orders',
+    'ocr'
 ]
 
 MIDDLEWARE = [
@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE':'django.db.backends.postgresql',
         'NAME':'G1_RMC_DB',
         'USER':'postgres',
-        'PASSWORD':"password",
+        'PASSWORD':"8888",
         'HOST':'localhost',
     }
 }
